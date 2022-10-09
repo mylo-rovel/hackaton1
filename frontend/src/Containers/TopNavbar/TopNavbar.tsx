@@ -4,9 +4,11 @@ import { PageStateContext } from '../../State/PageState';
 
 function TopNavbar() {
   const pageContext = useContext(PageStateContext);
+  
   const buttonsName = ["Home","Game", "Forum", "About us"];
-  const buttonsElements = buttonsName.reduce((acc:JSX.Element[], item:string) => {
-    return [...acc, <li>{item}</li>]
+  const buttonsElements = buttonsName.reduce((acc:JSX.Element[], item:string, index:number) => {
+    return [...acc, <li key={`liKey_${index}`} onClick = {() => pageContext.dispatch({type:'CHANGE', payload: index})}>
+        {item}</li>];
   }, []);
 
   return (

@@ -1,7 +1,6 @@
 import cors, {CorsOptions} from "cors";
 import morgan from "morgan";
 import express, {Express} from "express";
-import {regcivRouter} from "./routes/regciv.router.js";
 
 export const app: Express = express();
 
@@ -22,4 +21,3 @@ app.use(cors(corsOptions));
 
 app.use(morgan("combined"));
 app.use(express.json());
-app.use(regcivRouter);

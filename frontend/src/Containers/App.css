@@ -1,5 +1,6 @@
 .appContainer {
     font-family: 'Montserrat', sans-serif;
+    position: relative;
     /* min-height: 100vh;
     display: flex;
     align-items: center;
