@@ -1,0 +1,21 @@
+ALL OF THE FILES OF THIS FOLDER AND ALL OF ITS FUNCTIONS WORKS WITH THE USAGE OF 'useReducer' 
+and 'useContext'.
+First, import the CONTEXT object in both components: 
+    > the parent one from where we want to rerender (there we pass the state and DISPATCH function)
+    > and the one we want to use to modify the state (by using the DISPATCH function)
+Then, create variables using 'useReducer' passing the reducer and the initialState (in that order)
+After that, wrap the returned JSX-Elements using the Provider prop from the CONTEXT object 
+passing as value an object whose properties are "state" as the state to passdown and "dispatch"
+as the function which will change the state 
+
+EXAMPLE:
+interface IPageContext {pageState: number, dispatch:React.Dispatch<IAction>}
+
+export const PageStateContext = React.createContext<IPageContext>({
+  pageState: PageStateReducer.initialState.page,
+  dispatch: () => null
+});
+
+Finally, in the component where we want to run the dispatch function, create a variable
+using useContext and the imported ContextObject
+*/
