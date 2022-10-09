@@ -1,0 +1,11 @@
+.navBar {
+    padding:0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navBar > li {
+    list-style: none;
+    padding:0.5rem;
+}
+

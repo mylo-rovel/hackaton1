@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  #backend api
+  api:
+    container_name: api_container
+    build: ./
+    working_dir: /usr/src/api_app
+    # restart: always
+    ports:
+      - "3001:3001"
+    command: npm run watch
+    volumes: 
+      - .:/usr/src/api_app
+    depends_on:
+      - redis
+    environment:
+      PORT: ${PORT}
+      REDIS_URL: redis://redis_container:6379
+
+  # nosql database
+  redis:
+    image: redis
+    container_name: redis_container
+    # restart: always
+    ports:
+      - "6379:6379"
