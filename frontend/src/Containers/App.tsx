@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import './App.css';
-import {MainFrame} from "../Utilities/Imports";
+import {MainFrame, TopNavbar, MainFooter} from "../Utilities/ContainersImports";
+import { PageStateReducer, PageStateContext } from '../State/PageState';
+
+const populatePagesMap = (map: Map<number, JSX.Element>) => {
+  const options = [<MainFrame/>,];
+  for (let i = 0; i < options.length; i++) map.set(i, options[i]);
+}
 
 function App() {
+  const [pageState, dispatch] = useReducer(PageStateReducer.reducer, PageStateReducer.initialState);
+  const pagesMap = new Map<number, JSX.Element>();
+  populatePagesMap(pagesMap);
+
   return (
     <section className='appContainer'>
-      <MainFrame/>
+      <PageStateContext.Provider value = {{pageState:PageStateReducer.initialState.page, dispatch}} >
+        <TopNavbar/>
+        {(pagesMap.get(pageState.page)) ? pagesMap.get(pageState.page) : null}
+        <MainFooter/>
+      </PageStateContext.Provider>
     </section>
   );
 }

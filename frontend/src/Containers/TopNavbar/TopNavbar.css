@@ -1,0 +1,17 @@
+.navBar {
+    width: 100%;
+    background-color: black;
+    color:white;
+    font-weight: 800;
+    height: fit-content;
+    padding:0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navBar > li {
+    list-style: none;
+    padding:0.5rem;
+    margin: 0;
+}

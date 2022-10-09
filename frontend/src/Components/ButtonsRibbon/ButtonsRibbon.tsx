@@ -9,13 +9,7 @@ function ButtonsRibbon(props:IProps) {
   const buttonsToDisplay = props.buttons.reduce((acc:JSX.Element[], item:string) => {
     return [...acc, <li>{item}</li>]
   }, []);
-  return (
-      <article>
-        <ul className="navBar">
-          {buttonsToDisplay}
-        </ul>
-      </article>
-  );
+  return ( <ul className="navBar"> {buttonsToDisplay} </ul> );
 }
 
 export default ButtonsRibbon;
